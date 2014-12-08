@@ -12,13 +12,14 @@
 
   -# Set the viewport width to device width for mobile
   %meta{ :name => 'viewport', :content => "width=device-width, initial-scale=1.0" }
-  %meta{name: 'author', content: 'Georg Schaller, Numa de Montmollin & John Hannay'}
+  %meta{name: 'author', content: 'Numa de Montmollin & John Hannay'}
 
   -# /[if !IE 7] <style type="text/css">#wrap {display:table;height:100%}</style>
   -#= favicon_link_tag 'collaide_icon.ico'
   = csrf_meta_tag
   = stylesheet_link_tag 'application'
   = javascript_include_tag 'application'
+  = javascript_include_tag 'vendor/modernizr'
   %title= t('title')
 
 %body

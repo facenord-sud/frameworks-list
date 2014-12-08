@@ -1,0 +1,9 @@
+=simple_form_for framework do |f|
+  =f.input :vote, as: :hidden, input_html: {value: framework.vote + 1}
+  %button.tiny.success.round{type: :submit}
+    %i.fi-arrow-up.large
+%p= framework.vote
+=simple_form_for framework do |f|
+  =f.input :vote, as: :hidden, input_html: {value: framework.vote - 1}
+  %button.tiny.alert.round{type: :submit}
+    %i.fi-arrow-down.large

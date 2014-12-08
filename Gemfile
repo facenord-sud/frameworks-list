@@ -34,6 +34,7 @@ gem 'enumerize' # enumerations in models
 
 gem 'sqlite3', group: [:test, :development]
 gem 'rails_admin'
+gem 'select2-rails', '~> 3.5.9.1'
 
 group :development do
   gem 'binding_of_caller'

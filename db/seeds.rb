@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+user = User.create(email: 'admin@example.com', password: 'grimpe', password_confirmation: 'grimpe')
+user.admin = true
+user.save
+
+100.times do |i|
+  Framework.create!(user: user, name: "Framework ##{i}", description: 'A description')
+end

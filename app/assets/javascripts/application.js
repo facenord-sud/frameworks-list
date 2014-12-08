@@ -14,6 +14,12 @@
 //= require jquery_ujs
 //= require foundation
 //= require turbolinks
+//= require select2
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
+$(document).on('page:load', function() {
+    $(function () {
+        $(document).foundation();
+    });
+})

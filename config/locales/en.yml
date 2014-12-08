@@ -27,5 +27,26 @@ en:
     index:
       tilte: "List of frameworks"
       empy: "No frameworks for now..."
+      category: "Category: %{category}"
+      clear_category: "Clear category"
+      by: "By: %{by}"
+    update:
+      success: "You added a point to %{framework}"
+      error: "Error while voting"
+    categories:
+      empty: "No category"
+    show:
+      no_comment: "No Comments"
+      ago: "%{time} ago"
+    no_rights: "You don't have enough points to register a new framework"
+    new:
+      title: "Register a new framework"
   header:
     new_framework: "Register a new framework"
+    sign_up: "Sign up"
+    sign_in: "Sign in"
+    user:
+      settings: "Settings"
+      edit: "Edit profil"
+      logout: "Logout"
+      points: "%{points} points"

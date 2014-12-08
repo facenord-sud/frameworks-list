@@ -1,0 +1,8 @@
+%p= framework.description
+%p= t('frameworks.index.by', by: h(framework.user.name))
+-if framework.categories.any?
+  -framework.categories.each do |c|
+    %a{href: category_frameworks_path(c)}
+      %span.label.secondary= c.name
+-else
+  %p= t('frameworks.categories.empty')

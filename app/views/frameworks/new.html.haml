@@ -1,0 +1,6 @@
+%h1= t('frameworks.new.title')
+=simple_form_for @framework do |f|
+  =f.input :name
+  =f.input :description
+  =f.association :categories, collection: Category.all, input_html: {multiple: true, id: 'tags'}
+  =f.submit class: 'button'

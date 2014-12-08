@@ -1,1 +1,7 @@
 @import 'foundation-icons';
+.no-list {
+  list-style: none;
+}
+.select2-container-multi .select2-choices .select2-search-field input {
+  min-width: 972px;
+}

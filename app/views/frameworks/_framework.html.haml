@@ -1,2 +1,20 @@
 %li
-  %h3= framework.name
+  .row
+    .columns.small-2
+      =simple_form_for framework do |f|
+        =f.input :vote, as: :hidden, input_html: {value: framework.vote + 1}
+        %button.tiny.success.round{type: :submit}
+          %i.fi-arrow-up.large
+      %p= framework.vote
+      =simple_form_for framework do |f|
+        =f.input :vote, as: :hidden, input_html: {value: framework.vote - 1}
+        %button.tiny.alert.round{type: :submit}
+          %i.fi-arrow-down.large
+    .columns.small-10
+      .panel
+        %h3= link_to framework.name, framework
+        %p= framework.description
+        %p= t('frameworks.index.by', by: h(framework.user.name))
+        -framework.categories.each do |c|
+          %a{href: category_frameworks_path(c)}
+            %span.label.secondary= c.name

@@ -3,7 +3,7 @@ class CreateFrameworks < ActiveRecord::Migration
     create_table :frameworks do |t|
       t.string :name
       t.text :description
-      t.integer :vote
+      t.integer :vote, default: 0
       t.belongs_to :user
 
       t.timestamps
