@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'pg', group: :production
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -23,17 +23,40 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
-# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring',        group: :development
+gem 'kaminari', '~> 0.16.1' # pagination
+gem 'zurb-foundation' # framework html, css, js
+gem 'simple_form' # forms
+gem 'haml' # genère du html
+gem 'foundation-icons-sass-rails' # icones sympas
+gem 'devise' # user management
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'enumerize' # enumerations in models
 
-# Use unicorn as the app server
-# gem 'unicorn'
+gem 'sqlite3', group: [:test, :development]
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+group :development do
+  gem 'binding_of_caller'
+  gem 'magic_encoding'
+  gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
+  gem 'better_errors'
+  gem 'quiet_assets'
+  gem 'rails-erd'
+  gem 'meta_request'
+  gem 'byebug'
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'spring'
+end
+
+group :test do
+  gem 'capybara', '~> 2.4.3'
+  gem 'capybara-webkit'
+  gem 'factory_girl_rails', '4.1.0'
+  gem 'cucumber-rails', '1.2.1', :require => false
+  gem 'database_cleaner', '~> 1.2.0'
+  gem 'lorem-ipsum'
+  gem 'rspec-rails'
+  gem 'childprocess'
+end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
