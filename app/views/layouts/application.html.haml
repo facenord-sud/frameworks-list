@@ -1,18 +1,37 @@
 !!! 5
-%html{ :lang => "en"}
-  %head
-    %meta{ :charset => "utf-8" }
+/[if lt IE 7 ] <html class="ie6" lang="en">
+/[if IE 7 ] <html class="ie7" lang="en">
+/[if IE 8 ] <html class="ie8" lang="en">
+/[if IE 9 ] <html class="ie9" lang="en">
+/ [if (gte IE 9)|!(IE)] <! <html lang="en"> <![endif]
+%head
+  %meta{ :charset => 'utf-8' }
 
-    %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
+  -# Uncomment to make IE8 render like IE7
+  -# meta http-equiv="X-UA-Compatible" content="IE=7"
 
-    %title= content_for?(:title) ? yield(:title) : "Untitled"
+  -# Set the viewport width to device width for mobile
+  %meta{ :name => 'viewport', :content => "width=device-width, initial-scale=1.0" }
+  %meta{name: 'author', content: 'Georg Schaller, Numa de Montmollin & John Hannay'}
 
-    = stylesheet_link_tag "application"
-    = javascript_include_tag "vendor/modernizr"
-    = csrf_meta_tag
+  -# /[if !IE 7] <style type="text/css">#wrap {display:table;height:100%}</style>
+  -#= favicon_link_tag 'collaide_icon.ico'
+  = csrf_meta_tag
+  = stylesheet_link_tag 'application'
+  = javascript_include_tag 'application'
 
-  %body
+%body
+  = render 'layouts/header'
+  -unless flash.empty?
+    .row
+      .columns.small-24
+        -flash.each do |key, value|
+          .alert-box{class: key, :'data-alert' =>  true}
+            = value
+            %a{href: '#', class: 'close'}= "&times;".html_safe
 
-    = yield
+  .row
+    .columns.small-12
+      = yield
 
-    = javascript_include_tag "application"
+</html>
