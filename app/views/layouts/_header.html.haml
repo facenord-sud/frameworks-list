@@ -1,5 +1,5 @@
-.contain-to-grid.sticky
-  %nav.top-bar{'data-topbar' => ''}
+.contain-to-grid
+  %nav.top-bar{'data-topbar' => '', role: 'navigation'}
     %ul.title-area
       / Title Area
       %li.name
@@ -10,8 +10,6 @@
           %span
     %section.top-bar-section
       %ul.right
-        %li
-          =link_to(t('images.index.new_image'), new_image_path, class: 'button uploadBtn round')
         %li.hide-for-small
           -if user_signed_in?
             -#=print_unread_notifications
