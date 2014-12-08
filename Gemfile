@@ -33,6 +33,7 @@ gem 'devise' # user management
 gem 'enumerize' # enumerations in models
 
 gem 'sqlite3', group: [:test, :development]
+gem 'rails_admin'
 
 group :development do
   gem 'binding_of_caller'
