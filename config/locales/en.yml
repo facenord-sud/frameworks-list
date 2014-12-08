@@ -23,3 +23,9 @@ en:
   hello: "Hello world"
   app_name: "Framework list"
   title: "A site to list all frameworks"
+  frameworks:
+    index:
+      tilte: "List of frameworks"
+      empy: "No frameworks for now..."
+  header:
+    new_framework: "Register a new framework"

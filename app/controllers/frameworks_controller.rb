@@ -4,7 +4,7 @@ class FrameworksController < ApplicationController
   # GET /frameworks
   # GET /frameworks.json
   def index
-    @frameworks = Framework.all
+    @frameworks = Framework.order(:created_at).page params[:page]
   end
 
   # GET /frameworks/1

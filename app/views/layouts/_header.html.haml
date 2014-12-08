@@ -10,6 +10,7 @@
           %span
     %section.top-bar-section
       %ul.right
+        %li= link_to t('header.new_framework') if user.enough_points?
         %li.hide-for-small
           -if user_signed_in?
             -#=print_unread_notifications

@@ -19,6 +19,11 @@ ActiveRecord::Schema.define(version: 20141208182658) do
     t.datetime "updated_at"
   end
 
+  create_table "categories_frameworks", force: true do |t|
+    t.integer "framework_id"
+    t.integer "category_id"
+  end
+
   create_table "comments", force: true do |t|
     t.text     "comment"
     t.integer  "framework_id"
@@ -34,11 +39,6 @@ ActiveRecord::Schema.define(version: 20141208182658) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "frameworks_categories", force: true do |t|
-    t.integer "framework_id"
-    t.integer "category_id"
   end
 
   create_table "users", force: true do |t|
