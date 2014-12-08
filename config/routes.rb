@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
-  resources :categories
+  resources :categories, only: [:index] do
+    get 'frameworks', action: :index, controller: :frameworks
+  end
 
-  resources :comments
+  resources :frameworks, only: [:show, :update, :create, :new, :edit] do
+    resources :comments, only: :create
+  end
 
-  resources :frameworks
-
-  root 'static_page#about'
+  root 'frameworks#index'
 
   devise_for :users
 end
