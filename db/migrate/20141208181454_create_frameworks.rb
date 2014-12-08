@@ -4,6 +4,7 @@ class CreateFrameworks < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.integer :vote
+      t.belongs_to :user
 
       t.timestamps
     end
