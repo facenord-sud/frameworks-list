@@ -24,7 +24,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'kaminari', '~> 0.16.1' # pagination
-gem 'zurb-foundation' # framework html, css, js
+gem 'foundation-rails' # framework html, css, js
 gem 'simple_form' # forms
 gem 'haml' # genère du html
 gem 'foundation-icons-sass-rails' # icones sympas
