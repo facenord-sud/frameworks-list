@@ -58,16 +58,17 @@ class FrameworksController < ApplicationController
   # PATCH/PUT /frameworks/1.json
   def update
     respond_to do |format|
-      vote = framework_params[:vote].to_i
+      vote = params[:framework][:vote].to_i
       if not vote.nil? or vote != 0
         @framework.decrease_vote if vote < @framework.vote
         @framework.increase_vote if vote > @framework.vote
       end
       if @framework.save
+        @id = "framework-#{@framework.id}"
         current_user.points += 1
         current_user.save
         format.html { redirect_to :back, notice: t('frameworks.update.success', framework: @framework.name) }
-        format.json { render :show, status: :ok, location: @framework }
+        format.js { render :show }
       else
         format.html { redirect_to :back, notice: t('frameworks.update.error') }
         format.json { render json: @framework.errors, status: :unprocessable_entity }

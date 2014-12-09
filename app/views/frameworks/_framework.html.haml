@@ -1,15 +1,7 @@
-%li
+%li{id: "framework-#{framework.id}"}
   .row
     .columns.small-2
-      =simple_form_for framework do |f|
-        =f.input :vote, as: :hidden, input_html: {value: framework.vote + 1}
-        %button.tiny.success.round{type: :submit}
-          %i.fi-arrow-up.large
-      %p= framework.vote
-      =simple_form_for framework do |f|
-        =f.input :vote, as: :hidden, input_html: {value: framework.vote - 1}
-        %button.tiny.alert.round{type: :submit}
-          %i.fi-arrow-down.large
+      =render partial: 'vote', object: framework, as: 'framework'
     .columns.small-10
       .panel
         %h3= link_to framework.name, framework

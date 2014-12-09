@@ -1,5 +1,4 @@
 class Framework < ActiveRecord::Base
-
   include Searchable
 
   belongs_to :user
