@@ -33,11 +33,13 @@ gem 'devise' # user management
 gem 'enumerize' # enumerations in models
 
 gem 'sqlite3', group: [:test, :development]
-gem 'rails_admin'
-gem 'select2-rails', '~> 3.5.9.1'
+gem 'rails_admin' # administration
+gem 'select2-rails', '~> 3.5.9.1' # Better select
 
+# Elastic search
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
+gem 'bonsai-elasticsearch-rails', group: :production #For heroku
 
 group :development do
   gem 'binding_of_caller'
@@ -64,6 +66,7 @@ group :test do
 end
 
 gem 'rails_12factor', group: :production
+gem 'unicorn' # Web server for production
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
