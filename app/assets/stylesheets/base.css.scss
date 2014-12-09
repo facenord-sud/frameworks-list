@@ -5,3 +5,11 @@
 .select2-container-multi .select2-choices .select2-search-field input {
   min-width: 972px;
 }
+
+em {
+  padding: 3px;
+  font-style: normal;
+  font-weight: bold;
+  background-color: rgba(255,255,140,0.5);
+  border-radius: 3px;
+}

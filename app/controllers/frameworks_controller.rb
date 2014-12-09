@@ -75,6 +75,10 @@ class FrameworksController < ApplicationController
     end
   end
 
+  def search
+    @frameworks = Framework.full_text_search(params[:q]).page(params[:page])
+  end
+
   # DELETE /frameworks/1
   # DELETE /frameworks/1.json
   def destroy

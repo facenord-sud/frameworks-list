@@ -30,6 +30,8 @@ en:
       category: "Category: %{category}"
       clear_category: "Clear category"
       by: "By: %{by}"
+      search_label: "Search frameworks"
+      search_go: "Go"
     update:
       success: "You added a point to %{framework}"
       error: "Error while voting"
@@ -41,6 +43,9 @@ en:
     no_rights: "You don't have enough points to register a new framework"
     new:
       title: "Register a new framework"
+    search:
+      title: "Search results"
+      _no_results: "The search you did was unsuccesful"
   header:
     new_framework: "Register a new framework"
     sign_up: "Sign up"

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   end
 
   resources :frameworks, only: [:show, :update, :create, :new, :edit] do
+    get 'search', on: :collection
     resources :comments, only: :create
   end
 

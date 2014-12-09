@@ -1,0 +1,15 @@
+%h1= t('frameworks.search.title')
+=render partial: 'search_form'
+%ul.no-list
+  -if @frameworks.nil? or @frameworks.empty?
+    %p= t('frameworks.search._no_results')
+  -else
+    -@frameworks.each do |framework|
+      %li
+        %h3= link_to framework.try(:highlight).try(:name) ? framework.highlight.name[0].html_safe : framework.name, framework_path(framework._id)
+        -if framework.try(:highlight).try(:description)
+          -framework.highlight.description.each do |snippet|
+            %p= snippet.html_safe
+        -else
+          %p= framework.description
+  =paginate @frameworks

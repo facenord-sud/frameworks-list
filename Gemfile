@@ -36,6 +36,9 @@ gem 'sqlite3', group: [:test, :development]
 gem 'rails_admin'
 gem 'select2-rails', '~> 3.5.9.1'
 
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
+
 group :development do
   gem 'binding_of_caller'
   gem 'magic_encoding'
