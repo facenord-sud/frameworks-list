@@ -35,12 +35,11 @@ gem 'enumerize' # enumerations in models
 gem 'sqlite3', group: [:test, :development]
 gem 'rails_admin' # administration
 gem 'select2-rails', '~> 3.5.9.1' # Better select
-
+gem 'rest_client'
 # Elastic search
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 gem 'bonsai-elasticsearch-rails', group: :production #For heroku
-
 group :development do
   gem 'binding_of_caller'
   gem 'magic_encoding'

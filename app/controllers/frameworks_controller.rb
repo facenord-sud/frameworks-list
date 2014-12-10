@@ -41,7 +41,16 @@ class FrameworksController < ApplicationController
       message_no_access
       return
     end
+    categories = params[:categories]
     @framework = Framework.new(framework_params)
+    p categories
+    categories.split(',').each do |category|
+      logger.debug 'helloooo'
+      category_id = category.to_i
+      if(category_id != 0)
+       @framework.categories << Category.find(category_id)
+      end
+    end if categories.respond_to? :split
     @framework.user = current_user
     respond_to do |format|
       if @framework.save
@@ -98,7 +107,7 @@ class FrameworksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def framework_params
-      params.require(:framework).permit(:name, :description, category_ids: [])
+      params.require(:framework).permit(:name, :description)
     end
 
     def no_right

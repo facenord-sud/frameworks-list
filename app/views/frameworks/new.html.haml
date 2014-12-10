@@ -2,5 +2,5 @@
 =simple_form_for @framework do |f|
   =f.input :name
   =f.input :description
-  =f.association :categories, collection: Category.all, input_html: {multiple: true, id: 'tags'}
+  =hidden_field_tag :categories, '', id: 'tags'
   =f.submit class: 'button'

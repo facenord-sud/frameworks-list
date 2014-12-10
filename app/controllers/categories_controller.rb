@@ -4,7 +4,11 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+    if params[:q].blank?
+      @categories = Category.all
+    else
+      @categories = Category.search params[:q]
+    end
   end
 
   # GET /categories/1

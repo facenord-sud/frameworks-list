@@ -1,6 +1,8 @@
 class Framework < ActiveRecord::Base
   include Searchable
 
+  after_create :import_datas
+
   belongs_to :user
   has_many :comments
   has_and_belongs_to_many :categories
@@ -15,5 +17,11 @@ class Framework < ActiveRecord::Base
 
   def decrease_vote
     self.vote -= 1
+  end
+
+  private
+
+  def import_datas
+    Framework.import
   end
 end
