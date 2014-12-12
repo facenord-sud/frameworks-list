@@ -7,18 +7,17 @@ class FrameworksController < ApplicationController
   def index
     @category = Category.find(params[:category_id]) unless params[:category_id].blank?
     if @category.nil?
-      @frameworks = Framework.includes(:categories).includes(:user).order(vote: :desc, created_at: :desc).page(params[:page]).per(24)
+      @frameworks = Framework.index.index_page(params[:page])
     else
-      @frameworks = Framework.includes(:categories).includes(:user).order(vote: :desc, created_at: :desc).where(categories: {name: @category.name}).page(params[:page]).per(24) unless @category.nil?
+      @frameworks = Framework.index.where(categories: {name: @category.name}).index_page(params[:page])
     end
-
-
   end
 
   # GET /frameworks/1
   # GET /frameworks/1.json
   def show
     @comment = Comment.new
+    @comments = @framework.thirty_comments
   end
 
   # GET /frameworks/new
@@ -30,10 +29,6 @@ class FrameworksController < ApplicationController
     @framework = Framework.new
   end
 
-  # GET /frameworks/1/edit
-  def edit
-  end
-
   # POST /frameworks
   # POST /frameworks.json
   def create
@@ -43,24 +38,18 @@ class FrameworksController < ApplicationController
     end
     categories = params[:categories]
     @framework = Framework.new(framework_params)
-    p categories
     categories.split(',').each do |category|
-      logger.debug 'helloooo'
       category_id = category.to_i
       if(category_id != 0)
        @framework.categories << Category.find(category_id)
       end
     end if categories.respond_to? :split
     @framework.user = current_user
-    respond_to do |format|
       if @framework.save
-        format.html { redirect_to @framework, notice: 'Framework was successfully created.' }
-        format.json { render :show, status: :created, location: @framework }
-      else
-        format.html { render :new }
-        format.json { render json: @framework.errors, status: :unprocessable_entity }
+        redirect_to @framework, notice: 'Framework was successfully created.'
+        else
+          render :new
       end
-    end
   end
 
   # PATCH/PUT /frameworks/1
@@ -87,16 +76,6 @@ class FrameworksController < ApplicationController
 
   def search
     @frameworks = Framework.full_text_search(params[:q]).page(params[:page])
-  end
-
-  # DELETE /frameworks/1
-  # DELETE /frameworks/1.json
-  def destroy
-    @framework.destroy
-    respond_to do |format|
-      format.html { redirect_to frameworks_url, notice: 'Framework was successfully destroyed.' }
-      format.json { head :no_content }
-    end
   end
 
   private

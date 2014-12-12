@@ -5,8 +5,5 @@
     .columns.small-10
       .panel
         %h3= link_to framework.name, framework
-        %p= framework.description
-        %p= t('frameworks.index.by', by: h(framework.user.name))
-        -framework.categories.each do |c|
-          %a{href: category_frameworks_path(c)}
-            %span.label.secondary= c.name
+        %p= framework.description.truncate(200, separator: ' ', omission: ' ...')
+        =render partial: 'frameworks/info', object: framework, as: 'framework'

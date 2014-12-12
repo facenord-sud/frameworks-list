@@ -3,6 +3,9 @@ class Framework < ActiveRecord::Base
 
   after_create :import_datas
 
+  scope :index, -> { includes(:categories).includes(:user).order(vote: :desc, created_at: :desc) }
+  scope :index_page, ->(page) { page(page).per(24) }
+
   belongs_to :user
   has_many :comments
   has_and_belongs_to_many :categories
@@ -17,6 +20,10 @@ class Framework < ActiveRecord::Base
 
   def decrease_vote
     self.vote -= 1
+  end
+
+  def thirty_comments
+    comments.includes(:user).order(created_at: :desc).limit(30)
   end
 
   private

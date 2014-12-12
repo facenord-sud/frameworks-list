@@ -4,6 +4,7 @@
     =render partial: 'frameworks/vote', object: @framework, as: 'framework'
   .columns.small-11
     .panel
+      %p= @framework.description
       =render partial: 'frameworks/info', object: @framework, as: 'framework'
 .row
   .columns.small-12
@@ -11,4 +12,4 @@
 .row
   .columns.small-12
     %ul.no-list
-      =render(partial: 'comments/comment', collection: @framework.comments.order(created_at: :desc).limit(30)) || t('frameworks.show.no_comment')
+      =render(partial: 'comments/comment', collection: @comments) || t('frameworks.show.no_comment')
