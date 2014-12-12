@@ -1,10 +1,10 @@
 %h1= @framework.name
 .row
   .columns.small-1
-    =render partial: 'vote', object: @framework, as: 'framework'
+    =render partial: 'frameworks/vote', object: @framework, as: 'framework'
   .columns.small-11
     .panel
-      =render partial: 'info', object: @framework, as: 'framework'
+      =render partial: 'frameworks/info', object: @framework, as: 'framework'
 .row
   .columns.small-12
     =render partial: 'comments/form', object: @framework, as: 'framework'
